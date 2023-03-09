@@ -1,6 +1,6 @@
 package org.example;
+import static org.example.GameUtils.*;
 public class PictureArr {
-    String newLine = System.getProperty("line.separator");
 
     private String[] hangMan = new String[8];
 

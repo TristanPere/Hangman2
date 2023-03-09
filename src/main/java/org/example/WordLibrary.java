@@ -1,15 +1,35 @@
 package org.example;
-public class WordLibrary {
-    private String[] words;
 
-    public WordLibrary(String[] words) {
-        this.words = words;
+import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.FileReader;
+import java.io.IOException;
+
+public class WordLibrary {
+    private JSONParser parser = new JSONParser();
+    private JSONArray wordArr;
+
+    {
+        try {
+            Object wordObj = parser.parse(new FileReader("C:\\Users\\trist\\Documents\\Development\\05-java\\Hangman2\\src\\main\\java\\org\\example\\wordlist.json"));
+            wordArr = (JSONArray) wordObj;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
-    public WordLibrary(){ this.words = new String[] {"Octopus", "Brown", "Apple", "Pencil", "Case", "Super", "Robin", "Orange", "Rabbit", "Tower", "Eiffel", "Falafel"};}
 
     public String randomWord() {
-        int randomIndex = (int) (Math.random() * words.length);
-        return words[randomIndex];
+        int randomIndex = (int) (Math.random() * wordArr.size());
+        String word = (String) wordArr.get(randomIndex);
+            if (word.length() <= 5) {
+                word = randomWord();
+                System.out.println(word);
+            }
+        return word;
     }
 
 }

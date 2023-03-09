@@ -1,14 +1,22 @@
 package org.example;
 
+import static org.example.GameUtils.*;
+
 public class Game {
     private String word;
+
     private String[] solutionCharArr;
-    private String[] guessedDashArr; // Elephant - E_E_____
-    private String[] usedCharArr; // A,E,C,G,.....
+
+    private String[] guessedDashArr;
+
+    private String[] usedCharArr;
+
     private int correctGuesses;
+
     private int guessNum;
+
     private Player player;
-    private String newLine = System.getProperty("line.separator");
+
     private boolean playAgain;
 
     public Game() {
@@ -59,16 +67,18 @@ public class Game {
 
     public void gameOver() {
         if (player.getLives() == 0) {
-            System.out.println("You loose");
-            System.out.println("The word was: " + getWord());
+            System.out.println(String.join(newLine, player.getName() + ": You loose",
+            "The word was: " + getWord().toUpperCase(),
+            "Current Score: " + player.getScore()));
         } else {
-            System.out.println("Well done you win!");
+            System.out.println(String.join(newLine, "Well done " + player.getName() + " you win!",
+                    "Current Score: " + player.getScore()));
         }
     }
 
     public void intialiseGame() {
-        WordLibrary wordArr = new WordLibrary();
-        this.word = wordArr.randomWord();
+        WordLibrary wordLibrary = new WordLibrary();
+        this.word = wordLibrary.randomWord();
         this.solutionCharArr = word.toUpperCase().split("");
         this.guessedDashArr = new String[word.length()];
         for (int i = 0; i < word.length(); i++) {
@@ -76,13 +86,32 @@ public class Game {
         }
         this.correctGuesses = word.length();
         System.out.println(String.join(newLine,
-                "Welcome to Hangman.",
-                "You have 8 lives to guess the correct letters in the word.",
+                "Welcome to Hangman Player1.",
+                "You have 8 lives to guess the correct letters and word.",
                 "Press # at any point to view the rules",
                 getGuessedDashArr()));
         this.usedCharArr = new String[50];
         this.guessNum = 0;
         this.player = new Player("Player1");
+    }
+
+    public void intialiseGame(String playerName) {
+        WordLibrary wordLibrary = new WordLibrary();
+        this.word = wordLibrary.randomWord();
+        this.solutionCharArr = word.toUpperCase().split("");
+        this.guessedDashArr = new String[word.length()];
+        for (int i = 0; i < word.length(); i++) {
+            this.guessedDashArr[i] = "_";
+        }
+        this.correctGuesses = word.length();
+        System.out.println(String.join(newLine,
+                "Welcome to Hangman " + playerName + ".",
+                "You have 8 lives to guess the correct letters and word.",
+                "Press # at any point to view the rules",
+                getGuessedDashArr()));
+        this.usedCharArr = new String[26];
+        this.guessNum = 0;
+        this.player = new Player(playerName);
     }
 
     private String successfulGuessMessage(boolean successful, String guess) {
@@ -111,13 +140,14 @@ public class Game {
         if (successful) {
             return String.join(newLine,
                     guess + ": Is the Correct Word!",
-                    "Lives left: " + player.getLives());
+                    "Lives left: " + player.getLives(),
+                    "Current Score: " + player.getScore());
         } else {
             return String.join(newLine,
                     hangManGallows.getHangMan(player.getLives()),
                     guess + ": Is Not the Correct Word",
-                    "Lives left: " + player.getLives()
-            );
+                    "Lives left: " + player.getLives(),
+                    "Current Score: " + player.getScore());
         }
     }
 
@@ -129,9 +159,20 @@ public class Game {
                     "Guessed Characters: " + getUsedCharArr(),
                     "Lives left: " + player.getLives()));
             return false;
+        } else if (guessChar.matches("#")) {
+            ruleSet();
+            return false;
         } else if (!guessChar.matches("[a-zA-Z]+")) {
             System.out.println(String.join(newLine,
                     guessChar.toUpperCase() + " is not a letter. Please Guess Letters Only.",
+                    "Working Solution: " + getGuessedDashArr(),
+                    "Guessed Characters: " + getUsedCharArr(),
+                    "Lives left: " + player.getLives()));
+            return false;
+        } else if (guessChar.length() > 1 && guessChar.length() < 5) {
+            System.out.println(String.join(newLine,
+                    guessChar.toUpperCase() + " is Not One letter.",
+                    "Please Guess One letter at A Time or The Whole Word.",
                     "Working Solution: " + getGuessedDashArr(),
                     "Guessed Characters: " + getUsedCharArr(),
                     "Lives left: " + player.getLives()));
@@ -145,8 +186,11 @@ public class Game {
         boolean valid = charCheck(guessChar);
         if (valid) {
             if (word.toUpperCase().matches(guessChar.toUpperCase())) {
-                this.correctGuesses = 0;
                 System.out.println(successfulWordGuessMessage(true, guessChar.toUpperCase()));
+                for (int i = 0; i < correctGuesses + 5; i++) {
+                    player.setScore();
+                }
+                this.correctGuesses = 0;
             } else if (word.toUpperCase().contains(guessChar.toUpperCase())) {
                 int count = 0;
                 for (String s : solutionCharArr) {
@@ -167,6 +211,7 @@ public class Game {
                 }
                 usedCharArr[guessNum] = guessChar.toUpperCase();
                 this.guessNum++;
+                player.setScore();
                 this.correctGuesses -= count;
                 System.out.println(successfulGuessMessage(true, guessChar.toUpperCase()));
             } else if (!word.toUpperCase().contains(guessChar.toUpperCase()) && guessChar.length() == 1) {
