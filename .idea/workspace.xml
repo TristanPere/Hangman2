@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f67a46b-aa56-4ecc-a570-fe19853b5ae3" name="Changes" comment="Initial Commit to Repo">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/GameUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/wordlist.json" afterDir="false" />
+    <list default="true" id="8f67a46b-aa56-4ecc-a570-fe19853b5ae3" name="Changes" comment="Updated game with player options as well as json file">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/PlayerData.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/PlayerUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/PictureArr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/PictureArr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WordLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WordLibrary.java" afterDir="false" />
     </list>
@@ -49,13 +48,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/trist/Documents/Development/05-java/zoology2-code-along"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/trist/Documents/Development/05-java/zoology2-code-along&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -72,7 +71,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678294096885</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Updated game with player options as well as json file">
+      <created>1678382584731</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1678382584731</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -88,6 +94,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit to Repo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit to Repo" />
+    <MESSAGE value="Updated game with player options as well as json file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated game with player options as well as json file" />
   </component>
 </project>

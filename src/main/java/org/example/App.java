@@ -14,6 +14,7 @@ public class App {
         game.setPlayAgain(newGame);
         System.out.println("Please enter Player Name:");
         String playerName = scanner.nextLine();
+//        checkPlayerName(playerName);
         while (game.isPlayAgain()) {
             game.intialiseGame(playerName);
             while (game.getLives() > 0 && game.getCorrectGuesses() != 0) {

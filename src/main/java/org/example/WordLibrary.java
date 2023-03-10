@@ -27,7 +27,6 @@ public class WordLibrary {
         String word = (String) wordArr.get(randomIndex);
             if (word.length() <= 5) {
                 word = randomWord();
-                System.out.println(word);
             }
         return word;
     }

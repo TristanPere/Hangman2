@@ -1,4 +1,12 @@
 package org.example;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class GameUtils {
     public static String newLine = System.getProperty("line.separator");
@@ -14,4 +22,43 @@ public class GameUtils {
                 "You win if you can guess all the correct letters or enter the correct word!",
                 "Good luck:)"));
     }
+    private static int id=0;
+    public static int nextID(){
+         return id++;
+    }
+    private static JSONParser parser = new JSONParser();
+    public static JSONArray readFromJSON(){
+        JSONArray playerArr = new JSONArray();
+        try {
+            Object playerArrObj = parser.parse(new FileReader("C:\\Users\\trist\\Documents\\Development\\05-java\\Hangman2\\src\\main\\java\\org\\example\\PlayerData.json"));
+            playerArr = (JSONArray) playerArrObj;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        return playerArr;
+    };
+    public static void writeToJSON(JSONObject playerObj){
+        JSONArray playerArr = new JSONArray();
+        try {
+            Object playerArrObj = parser.parse(new FileReader("C:\\Users\\trist\\Documents\\Development\\05-java\\Hangman2\\src\\main\\java\\org\\example\\PlayerData.json"));
+            playerArr = (JSONArray) playerArrObj;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        playerArr.add(playerObj);
+        try {
+            FileWriter file = new FileWriter("C:\\Users\\trist\\Documents\\Development\\05-java\\Hangman2\\src\\main\\java\\org\\example\\PlayerData.json");
+            file.write(playerArr.toJSONString());
+            file.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        System.out.println("JSON file created: " + playerObj);
+    }
+
 }

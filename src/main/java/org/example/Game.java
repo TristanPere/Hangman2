@@ -1,6 +1,7 @@
 package org.example;
 
 import static org.example.GameUtils.*;
+import static org.example.PlayerUtils.*;
 
 public class Game {
     private String word;
@@ -66,6 +67,7 @@ public class Game {
     }
 
     public void gameOver() {
+        writeToJSON(buildPlayerObj(player.getName(), player.getScore()));
         if (player.getLives() == 0) {
             System.out.println(String.join(newLine, player.getName() + ": You loose",
             "The word was: " + getWord().toUpperCase(),
@@ -112,6 +114,7 @@ public class Game {
         this.usedCharArr = new String[26];
         this.guessNum = 0;
         this.player = new Player(playerName);
+
     }
 
     private String successfulGuessMessage(boolean successful, String guess) {
@@ -229,5 +232,6 @@ public class Game {
             }
         }
     }
+
 }
 
