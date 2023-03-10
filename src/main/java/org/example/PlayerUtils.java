@@ -27,7 +27,6 @@ public class PlayerUtils {
         boolean match = false;
         JSONArray userNameArr = playerNameArray();
         for (int i = 0; i < userNameArr.size(); i++) {
-            System.out.println(userNameArr.get(i));
             if (userNameArr.get(i).toString().matches(playerName)) {
                 match = true;
             }
