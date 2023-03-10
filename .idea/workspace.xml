@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f67a46b-aa56-4ecc-a570-fe19853b5ae3" name="Changes" comment="Added JSON file for player data to be stored.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/AppUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/PlayerDataUtils.java" afterDir="false" />
+    <list default="true" id="8f67a46b-aa56-4ecc-a570-fe19853b5ae3" name="Changes" comment="removed sout">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/PictureArr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/PictureArr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/PlayerData.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/PlayerData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/PlayerDataUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/PlayerDataUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/PlayerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/PlayerUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WordLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WordLibrary.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +82,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678445678030</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Hangman finished!">
+      <created>1678462819454</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1678462819454</updated>
+    </task>
+    <task id="LOCAL-00005" summary="removed sout">
+      <created>1678462978097</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1678462978097</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -106,6 +114,8 @@
     <MESSAGE value="Initial Commit to Repo" />
     <MESSAGE value="Updated game with player options as well as json file" />
     <MESSAGE value="Added JSON file for player data to be stored." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added JSON file for player data to be stored." />
+    <MESSAGE value="Hangman finished!" />
+    <MESSAGE value="removed sout" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed sout" />
   </component>
 </project>

@@ -42,14 +42,15 @@ public class PlayerUtils {
         return id;
     }
     public static int getPlayerScore(String playerName) {
-        int id=getNumOfUsers()+1;
+        int score=0;
+        JSONArray userScoreArr = playerScoreArray();
         JSONArray userNameArr = playerNameArray();
         if (userNameArr.contains(playerName)) {
-            id = userNameArr.indexOf(playerName);
+            score = Integer.parseInt((userScoreArr.get(getPlayerId(playerName)).toString()));
+            System.out.println(score);
         }
-        return id;
+        return score;
     }
-
 }
 
 
