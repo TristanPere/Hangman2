@@ -25,9 +25,9 @@ public class WordLibrary {
     public String randomWord() {
         int randomIndex = (int) (Math.random() * wordArr.size());
         String word = (String) wordArr.get(randomIndex);
-            if (word.length() <= 5) {
-                word = randomWord();
-            }
+        if (word.length() <= 5) {
+            word = randomWord();
+        }
         return word;
     }
 

@@ -1,5 +1,6 @@
 package org.example;
 
+import static org.example.AppUtils.*;
 import static org.example.GameUtils.*;
 import static org.example.PlayerUtils.*;
 
@@ -66,18 +67,6 @@ public class Game {
         return String.join(",", cleanArr);
     }
 
-    public void gameOver() {
-        writeToJSON(buildPlayerObj(player.getName(), player.getScore()));
-        if (player.getLives() == 0) {
-            System.out.println(String.join(newLine, player.getName() + ": You loose",
-            "The word was: " + getWord().toUpperCase(),
-            "Current Score: " + player.getScore()));
-        } else {
-            System.out.println(String.join(newLine, "Well done " + player.getName() + " you win!",
-                    "Current Score: " + player.getScore()));
-        }
-    }
-
     public void intialiseGame() {
         WordLibrary wordLibrary = new WordLibrary();
         this.word = wordLibrary.randomWord();
@@ -88,13 +77,12 @@ public class Game {
         }
         this.correctGuesses = word.length();
         System.out.println(String.join(newLine,
-                "Welcome to Hangman Player1.",
                 "You have 8 lives to guess the correct letters and word.",
                 "Press # at any point to view the rules",
                 getGuessedDashArr()));
         this.usedCharArr = new String[50];
         this.guessNum = 0;
-        this.player = new Player("Player1");
+        this.player.setLives();
     }
 
     public void intialiseGame(String playerName) {
@@ -113,8 +101,25 @@ public class Game {
                 getGuessedDashArr()));
         this.usedCharArr = new String[26];
         this.guessNum = 0;
+    }
+    public void initialisePlayer(String playerName){
         this.player = new Player(playerName);
-
+        this.player.setScore(getPlayerScore(playerName));
+    }
+    public void gameOver() {
+        if(isNewUser()){
+            writeToJSON(buildPlayerObj(player.getName(), player.getScore()));
+        } else {
+            updateJSON(getPlayerId(player.getName()));
+        }
+        if (player.getLives() == 0) {
+            System.out.println(String.join(newLine, player.getName() + ": You loose",
+                    "The word was: " + getWord().toUpperCase(),
+                    "Current Score: " + player.getScore()));
+        } else {
+            System.out.println(String.join(newLine, "Well done " + player.getName() + " you win!",
+                    "Current Score: " + player.getScore()));
+        }
     }
 
     private String successfulGuessMessage(boolean successful, String guess) {

@@ -1,64 +1,51 @@
 package org.example;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+
+import static org.example.AppUtils.*;
+import static org.example.PlayerUtils.*;
 
 public class GameUtils {
-    public static String newLine = System.getProperty("line.separator");
+    private static String userName;
+    private static boolean isNewUser;
 
-     public static void ruleSet(){
-        System.out.println(String.join(newLine, "HangMan:",
-                "The aim of the game is to guess the unknown word.",
-                "There is a blank line for each letter in the word.",
-                "Each time you are prompted to guess a letter you may enter a letter.",
-                "If you think you know the word you can enter the word!",
-                "But be warned! If you enter the wrong word you loose the game!",
-                "You have 8 live (chances to make the wrong guess)",
-                "You win if you can guess all the correct letters or enter the correct word!",
-                "Good luck:)"));
-    }
-    private static int id=0;
-    public static int nextID(){
-         return id++;
-    }
-    private static JSONParser parser = new JSONParser();
-    public static JSONArray readFromJSON(){
-        JSONArray playerArr = new JSONArray();
-        try {
-            Object playerArrObj = parser.parse(new FileReader("C:\\Users\\trist\\Documents\\Development\\05-java\\Hangman2\\src\\main\\java\\org\\example\\PlayerData.json"));
-            playerArr = (JSONArray) playerArrObj;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-        return playerArr;
-    };
-    public static void writeToJSON(JSONObject playerObj){
-        JSONArray playerArr = new JSONArray();
-        try {
-            Object playerArrObj = parser.parse(new FileReader("C:\\Users\\trist\\Documents\\Development\\05-java\\Hangman2\\src\\main\\java\\org\\example\\PlayerData.json"));
-            playerArr = (JSONArray) playerArrObj;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-        playerArr.add(playerObj);
-        try {
-            FileWriter file = new FileWriter("C:\\Users\\trist\\Documents\\Development\\05-java\\Hangman2\\src\\main\\java\\org\\example\\PlayerData.json");
-            file.write(playerArr.toJSONString());
-            file.close();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        System.out.println("JSON file created: " + playerObj);
+    public static boolean isNewUser() {
+        return isNewUser;
     }
 
+    public static String getUserName() {
+        return userName;
+    }
+    public static void loginCheck(int loginType) {
+        if (loginType == 1) {
+            System.out.println("Please enter your unique username");
+            String userNameInput = Scanner().nextLine();
+            if (checkPlayerName(userNameInput)) {
+                System.out.println("Welcome Back:" + userNameInput);
+                userName=userNameInput;
+                isNewUser=false;
+            } else {
+                System.out.println("This username does not match any we have on file.");
+                System.out.println("Please try again(1) or Login as a NewUser(2)");
+                String login = Scanner().nextLine();
+                if (isAnInteger(login)) {
+                    loginCheck(Integer.parseInt(login));
+                } else {
+                    loginCheck(3);
+                }
+            }
+        } else if (loginType == 2) {
+            System.out.println("Please enter your new unique username");
+            String userNameInput = Scanner().nextLine();
+            userName=userNameInput;
+            isNewUser=true;
+        } else {
+            System.out.println("Please enter a valid number. Login(1) | NewUser(2)");
+            String login = Scanner().nextLine();
+            if (isAnInteger(login)) {
+                loginCheck(Integer.parseInt(login));
+            } else {
+                loginCheck(3);
+            }
+        }
+    }
 }

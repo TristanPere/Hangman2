@@ -1,5 +1,5 @@
 package org.example;
-import static org.example.GameUtils.*;
+import static org.example.AppUtils.*;
 public class PictureArr {
 
     private String[] hangMan = new String[8];

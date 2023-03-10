@@ -1,7 +1,10 @@
 package org.example;
-
 public class Player {
     private String name;
+
+    public void setLives() {
+        this.lives = 8;
+    }
     private int lives;
     private int score;
     public Player(String name) {
@@ -12,14 +15,15 @@ public class Player {
     public int getScore() {
         return score;
     }
-
     public void setScore(){
         this.score +=100;
+    }
+    public void setScore(int score){
+        this.score += score;
     }
     public String getName() {
         return name;
     }
-
     public void looseLife() {
         this.lives--;
     }
